@@ -6,22 +6,31 @@
 #include <vector>
 class Solution {
 public:
-   std::string longestCommonPrefix(std::vector<std::string>& strs) {
-       for (int i = 0; i < strs[0].length() - 1; i++)
-       {
-           return strs[0];
-       }
-       //return strs[0];
-    }
+    std::string longestCommonPrefix(std::vector<std::string>& strs) {
+        std::string answer;
+        for (int i = 0; i < strs[0].length() - 1; i++)
+        {
+            if (strs[0][i] == strs[1][i] && strs[0][i] == strs[2][i])
+            {
+
+                answer += strs[0][i];
+            }
+            else
+                break;
+
+        }
+        return answer;
+    }   
 };
 
 int main()
 {   
     std::vector<std::string> aww = {"flower", "flow", "flight" };
     Solution sol;
-    /*std::cout << aww[0];
-    std::cout << sol.longestcommonprefix(aww);
-    std::cout << aww[0];*/
+    std::cout<<sol.longestCommonPrefix(aww);
+    
+    
+    
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
