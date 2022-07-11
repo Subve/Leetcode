@@ -6,31 +6,48 @@
 
 class Solution {
 public:
-    
-    int romanToInt(std::string s) {
-        int maxPast = 3;
-        int size = (int)s.length();
-        int answ=0;
-        int tmpansw=0;
-        int i = 0;
-        while (i <= size)
+    int prep(char h)
+    {
+        switch (h)
         {
-            if (s[s.length()-1] == )
+        case 'I':
+            return 1;
+        case 'V':
+            return 5;
+        case 'X':
+            return 10;
+        case 'L':
+            return 50;
+        case 'C':
+            return 100;
+        case 'D':
+            return 500;
+        case 'M':
+            return 1000;
+        default:
+            break;
+        }
+        return -1;
+    }
+    int romanToInt(std::string s) {
+            int ans = 0;
+            for (int i = s.length() - 1; i >= 0; i--)
             {
-                tmpansw = 1;
+                
+                if (i == s.length() - 1 || prep(s[i]) >= prep(s[i + 1]))
+                    ans += prep(s[i]);
+                else
+                    ans -= prep(s[i]);
             }
-            i++;
-        } 
-        answ = tmpansw;
-        return answ;
-    } 
+            return ans;
+        }
 
 };
 
 int main()
 {
     Solution sol;
-    std::cout<<sol.romanToInt("I");
+    std::cout << sol.romanToInt("MCMI") << std::endl;
     std::cout << "Hello World!\n";
     
 }
